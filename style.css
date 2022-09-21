@@ -1,6 +1,10 @@
 body {
     font-family: "Righteous", sans-serif;
 }
+.icon{
+    width: 90%;
+    height: 90%;
+}
 
 .card {
     width: 150px;
@@ -11,12 +15,14 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
 }
 .card_front {
     background-color: yellow;
-    padding: 10px;
 }
 .card_back {
     background-color: mediumspringgreen;
+    font-size: 50px;
 }
