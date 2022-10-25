@@ -13,7 +13,30 @@ let techs = [
     "mongodb",
     "nodedotjs",
 ];
-
+creatCardsFromTechs(techs);
 function creatCardsFromTechs(techs) {
-    let card;
+    let card = [];
+    for (let tech of techs) {
+        card.push(creatCardsFromPair(tech));
+    }
+    return card.flatMap(pair=>pair);
+}
+function creatCardsFromPair(tech) {
+    return [
+        {
+            id: createIdFromCards(tech),
+            icon: tech,
+            flipped: false,
+        },
+        {
+            id: createIdFromCards(tech),
+            icon: tech,
+            flipped: false,
+        },
+        
+    ];
+}
+
+function createIdFromCards(tech) {
+    return tech + parseInt(Math.random() * 1000);
 }
