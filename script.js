@@ -14,6 +14,6 @@ let techs = [
     "nodedotjs",
 ];
 
-function creatCardsFromTechs(techs){
-    
+function creatCardsFromTechs(techs) {
+    let card;
 }
