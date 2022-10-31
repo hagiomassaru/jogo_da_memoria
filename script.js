@@ -13,13 +13,35 @@ let techs = [
     "mongodb",
     "nodedotjs",
 ];
+let cards = null;
+startGame();
+
+function startGame() {
+    cards = creatCardsFromTechs(techs);
+    shuffleCards(cards);
+    console.log(cards)
+}
+function shuffleCards(cards) {
+    let currentIndex = cards.length;
+    let randomIndex = 0;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [cards[randomIndex], cards[currentIndex]] = [
+            cards[currentIndex],
+            cards[randomIndex],
+        ];
+    }
+}
+
 creatCardsFromTechs(techs);
 function creatCardsFromTechs(techs) {
     let card = [];
     for (let tech of techs) {
         card.push(creatCardsFromPair(tech));
     }
-    return card.flatMap(pair=>pair);
+    return card.flatMap((pair) => pair);
 }
 function creatCardsFromPair(tech) {
     return [
@@ -33,7 +55,6 @@ function creatCardsFromPair(tech) {
             icon: tech,
             flipped: false,
         },
-        
     ];
 }
 
