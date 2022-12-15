@@ -1,4 +1,18 @@
 let game = {
+    lockMode: false,
+    firstCard: null,
+    secondCard: null,
+    setCards: function () {
+        this.cards.filter((card) => card.id === id)[0];
+        if (card.flipped || this.lockMode) {
+            return false;
+        }
+        if (!this.firstCard) {
+            this.firstCard = card;
+            return true;
+        }
+    },
+
     techs: [
         "bootstrap",
         "css3",
@@ -19,8 +33,7 @@ let game = {
         });
         this.cards = this.card.flatMap((pair) => pair);
         this.shuffleCards();
-        return this.cards
-
+        return this.cards;
     },
     creatCardsFromPair: function (tech) {
         return [
