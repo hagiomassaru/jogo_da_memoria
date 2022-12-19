@@ -3,11 +3,9 @@ const BACK = "card_back";
 const CARD = "card";
 const ICON = "icon";
 
-
 startGame();
 
 function startGame() {
-       
     initializeCards(game.creatCardsFromTechs());
 }
 
@@ -45,10 +43,26 @@ function creatCardContentFace(face, card, element) {
     element.appendChild(cardElementFace);
 }
 
-
-
-
-
 function flipcard() {
-    this.classList.add("flip");
+    if (game.setCards(this.id)) {
+        this.classList.add("flip");
+        if (game.secondCard) {
+            if (game.checkMatch()) {
+                game.clearCards();
+            } else {
+                setTimeout(() => {
+                    let firstCardView = document.getElementById(
+                        game.firstCard.id
+                    );
+                    let secondCardView = document.getElementById(
+                        game.secondCard.id
+                    );
+
+                    firstCardView.classList.remove("flip");
+                    secondCardView.classList.remove("flip");
+                    game.unfliped();
+                }, 1000);
+            }
+        }
+    }
 }
