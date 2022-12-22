@@ -11,7 +11,7 @@ function startGame() {
 
 function initializeCards(cards) {
     let gameBoard = document.getElementById("gameboard");
-
+    gameBoard.innerHTML = "";
     game.cards.forEach((card) => {
         let cardElement = document.createElement(`div`);
         cardElement.id = card.id;
@@ -49,6 +49,10 @@ function flipcard() {
         if (game.secondCard) {
             if (game.checkMatch()) {
                 game.clearCards();
+                if (game.checkGameOver()) {
+                    let gameOver = document.getElementById("gameover");
+                    gameOver.style.display = "flex";
+                }
             } else {
                 setTimeout(() => {
                     let firstCardView = document.getElementById(
@@ -65,4 +69,10 @@ function flipcard() {
             }
         }
     }
+}
+function restart() {
+    game.clearCards();
+    startGame();
+    let gameOver = document.getElementById("gameover");
+    gameOver.style.display = "none";
 }
